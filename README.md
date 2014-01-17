@@ -13,6 +13,10 @@ alias push='~/bin/push.sh'
 
 [1] In order to cd, the pop script will have to be executed in the current shell. 
 
+### pushPop.rc : push & pop on steroids
+Add these shell functions to .bashrc or .profile. 
+pop N will cd to the Nth directory in the list.
+
 ### mpdLyrics.sh
 
 Create the lyrics file for mpd from the current song's id3 tags.

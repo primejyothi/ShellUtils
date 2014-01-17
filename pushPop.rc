@@ -1,0 +1,38 @@
+# Shell functions to remember directories. Add to .bashrc
+function push ()
+{
+	# Remember a directory for pop
+	lines_to_keep=9
+	data_file=~/.dir.dat
+	tmp_file=~/.dir.dat.$$ 
+	tail -"$lines_to_keep" $data_file > $tmp_file
+	mv $tmp_file $data_file
+	cur_dir=`pwd`
+	echo $cur_dir >> $data_file
+}
+
+# pop pop to the saved directory. pop n will cd to the nth saved directory.
+function pop ()
+{
+	# cd to the selected directory. Need to be executed from the current shell.
+	lines_to_keep=9
+	data_file=~/.dir.dat
+	if [[ -z "$1" ]]
+	then
+		tail -"$lines_to_keep" $data_file |nl
+		echo -e "Choice please : " \\c
+		read choice
+		case "$choice" in
+		[0-9]*)
+			;;
+		*)
+			echo "Invalid choice"
+			return 0
+			;;
+		esac
+	else
+		choice=$1
+	fi
+	dest_dir=`tail -"$lines_to_keep" $data_file | head -$choice |tail -1`
+	cd $dest_dir
+}
