@@ -1,4 +1,5 @@
 # Shell functions to remember directories. Add to .bashrc
+# primejyothi at gmail dot com 20140117
 function push ()
 {
 	# Remember a directory for pop
@@ -14,7 +15,7 @@ function push ()
 # pop pop to the saved directory. pop n will cd to the nth saved directory.
 function pop ()
 {
-	# cd to the selected directory. Need to be executed from the current shell.
+	# cd to the selected directory. 
 	lines_to_keep=9
 	data_file=~/.dir.dat
 	if [[ -z "$1" ]]
