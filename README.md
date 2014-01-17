@@ -27,11 +27,11 @@ The modified/deleted files are moved to the directory pointed by the CTRL|CTRL|b
 
 CTRL|backupdir|/destinationFolder/deletions/
 
-A Sample Control:
+A Sample Control file:
 ```
-# CTRL|backupdir|/destinationFolder/deletions/
-# sourceFolder1/|destinationFolder1/
-# sourceFolder2/|destinationFolder2/
+CTRL|backupdir|/destinationFolder/deletions/
+sourceFolder1/|destinationFolder1/
+sourceFolder2/|destinationFolder2/
 ```
 
 #### Running backupScript.sh
