@@ -17,3 +17,22 @@ alias push='~/bin/push.sh'
 
 Create the lyrics file for mpd from the current song's id3 tags.
 
+### backupScript.sh
+Backup data using rsync. The directories to backup and the destinations are read from a control file.
+
+#### Control File
+The control file fields are separated by pipes (|). Lines starting with # characters are ignored.
+
+The modified/deleted files are moved to the directory pointed by the CTRL|CTRL|backupdir entry.
+
+CTRL|backupdir|/destinationFolder/deletions/
+
+A Sample Control:
+```
+# CTRL|backupdir|/destinationFolder/deletions/
+# sourceFolder1/|destinationFolder1/
+# sourceFolder2/|destinationFolder2/
+```
+
+#### Running backupScript.sh
+backupScript profileFile
