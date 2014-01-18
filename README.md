@@ -4,7 +4,7 @@ ShellUtils
 Some random shell scripts written to make my life bit easier.
 
 ### push & pop
-Shows a numbered list of saved directories and cd to the selected directory. Push will remember the current directory and pop[1] will cd to the selected directory.
+Shows a numbered list of saved directories and cd to the selected directory. Push will remember the current directory and pop[1] will cd to the selected directory. 
 Create two aliases as follows :
 
 alias pop='. ~/bin/pop.sh'
@@ -40,3 +40,9 @@ sourceFolder2/|destinationFolder2/
 
 #### Running backupScript.sh
 backupScript profileFile
+
+### srchEpub.sh
+Search for a pattern in epub files which are listed in the input file.
+
+#### Running srchEpub.sh
+srchEpub.sh fileContainingNamesOfEpubsToSearch SearchString
