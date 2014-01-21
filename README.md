@@ -46,3 +46,29 @@ Search for a pattern in epub files which are listed in the input file.
 
 #### Running srchEpub.sh
 srchEpub.sh fileContainingNamesOfEpubsToSearch SearchString
+
+### slCodeGen.sh
+Generate C code for SQLite dynamic binding
+
+#### Running slCodeGen.sh
+
+slCodeGen.sh configFile
+
+##### Sample Config file
+```
+# Comments start with #
+#Query
+query|select path from tab1 where stat = 1 order by size
+
+#Name of the statement
+name|fetchData
+
+#Name of the Db Handle
+db|dbRecPtr->fileDb
+
+#int Variable
+int|id
+
+# String variable with size 30
+str|col1|30
+```

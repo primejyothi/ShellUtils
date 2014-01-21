@@ -8,10 +8,22 @@ then
 	echo "Usage : `basename $0` configFile"
 	cat <<- end
 
-	Example Config file
-	query=select col1, col2, col3 from table where col1 = :val1 and col2 = :val2;
-	int=val1
-	str=val2
+	Sample Config file
+	# Comments start with #
+	#Query
+	query|select path from tab1 where stat = 1 order by size
+
+	#Name of the statement
+	name|fetchData
+
+	#Name of the Db Handle
+	db|dbRecPtr->fileDb
+
+	#int Variable
+	int|id
+
+	# String variable with size 30
+	str|col1|30
 	end
 	exit 1
 fi
