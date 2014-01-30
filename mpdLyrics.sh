@@ -41,6 +41,7 @@ do
 	lines=`wc -l < /tmp/mpd.lyrics`
 	if [[ "$lines" -gt 5 ]]
 	then
+		echo "${fileName}"
 		cat /tmp/mpd.lyrics
 		lyricsFileName=`mpc -f "%artist% - %title%" current`
 		mv /tmp/mpd.lyrics "${lyricsDir}/${lyricsFileName}.txt"
