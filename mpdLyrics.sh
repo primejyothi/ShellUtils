@@ -37,6 +37,7 @@ do
 	fileName=${musicDir}/${current}
 
 	exiftool "${fileName}" |grep "Lyrics" | awk -F": " '{print $2}' | tr -s '\.\.' '\n' > /tmp/mpd.lyrics
+	exiftool -b -T -Picture "${fileName}" > /tmp/mpd.jpg
 
 	lines=`wc -l < /tmp/mpd.lyrics`
 	if [[ "$lines" -gt 5 ]]
