@@ -1,0 +1,21 @@
+# Shell function to go n level up in the directory structure.
+# Add to .bashrc
+# primejyothi at gmail dot com 20140814
+
+function up ()
+{
+	lvls=""
+	if [[ ! -z "$1" ]]
+	then
+		for i in `seq $1`
+		do
+			lvls="${lvls}../"
+		done
+	else
+		lvls="../"
+	fi
+
+	# Will land up in / if n is too large.
+	cd ${lvls}
+	pwd
+}
