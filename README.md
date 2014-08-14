@@ -72,3 +72,8 @@ int|id
 # String variable with size 30
 str|col1|30
 ```
+
+### up.rc : Shell function to go n level up in the directory structure
+Add this shell functions to .bashrc or .profile. To move 3 level up in
+the directory structure, invoke up 3. If n is largern than the directory
+level depth, will end up in /
