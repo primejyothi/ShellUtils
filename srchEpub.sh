@@ -2,6 +2,7 @@
 # Search for a string in epub files listed in a file and prints the names
 # of the epub files that contain the search string.
 # primejyothi at gmail dot com 20140118
+# License : GPLv3
 
 if [[ "$#" -ne 2 ]]
 then

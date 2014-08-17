@@ -1,6 +1,7 @@
 # Shell function to go n level up in the directory structure.
 # Add to .bashrc
 # primejyothi at gmail dot com 20140814
+# License : GPLv3
 
 function up ()
 {

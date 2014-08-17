@@ -20,6 +20,7 @@
 # sourceFolder999|destinationFolder999
 
 # Author	: Prime Jyothi, http://primej.blogspot.com
+# License : GPLv3
 
 
 logFile="backup.`date \"+%Y%m%d%H%M%S\"`.log"

@@ -4,6 +4,8 @@
 # primejyothi@gmail.com 2013-12-31
 # Require mpc and exiftool
 # 
+# License : GPLv3
+
 
 if [[ "$1" = "all" ]]
 then

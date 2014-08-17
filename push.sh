@@ -1,5 +1,7 @@
 #! /usr/bin/env bash
 # Remember a directory for pop.sh
+# License : GPLv3
+
 lines_to_keep=9
 data_file=~/.dir.dat
 tmp_file=~/.dir.dat.$$ 

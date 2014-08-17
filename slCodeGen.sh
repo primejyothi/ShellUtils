@@ -2,6 +2,7 @@
 
 # Script to generate SQLite Code for dynamic binding
 # primejyothi at gmail dot com  20130716
+# License : GPLv3
 
 if [[ "$#" -ne 1 ]]
 then

@@ -1,5 +1,7 @@
 # Shell functions to remember directories. Add to .bashrc
 # primejyothi at gmail dot com 20140117
+# License : GPLv3
+
 function push ()
 {
 	# Remember a directory for pop
