@@ -8,7 +8,7 @@
 # The fields are separated by pipe symbols. 
 #
 # The rsync command is run with backup and backup-dir option due to which
-# the changed/deleted files will be moved to the folder specified by the
+# the changed/deleted files will be moved to a sub folder specified by the
 # backupdir entry in the profile file.
 #
 # CTRL|backupdir|/destinationFolder/deletions/
@@ -20,10 +20,21 @@
 # sourceFolder999|destinationFolder999
 
 # Author	: Prime Jyothi, http://primej.blogspot.com
-# License : GPLv3
 
 
-logFile="backup.`date \"+%Y%m%d%H%M%S\"`.log"
+if [[ -z "${LOGDIR}" ]]
+then
+	# Set the default log directory.
+	LOGDIR="${HOME}/backupLogs"
+fi
+
+if [[ ! -d "${LOGDIR}" ]]
+then
+	echo "Log : Unable to access log directory ${LOGDIR}, using $PWD"
+	LOGDIR=${PWD}
+fi
+
+logFile="${LOGDIR}/backup.`date \"+%Y%m%d%H%M%S\"`.log"
 backupSuffix=.bkup.`date "+%Y%m%d%H%M%S"`
 
 if [[ "$#" -ne 1 ]]
@@ -36,6 +47,8 @@ else
 	then
 		echo "Unable to read profile file ${profileFile}"
 		exit 2
+	else
+		echo "Log : Profile file is ${profileFile}"
 	fi
 fi
 
@@ -49,21 +62,35 @@ then
 	exit 3
 fi
 
-syncCmd="rsync -avv --log-file=${logFile} --backup --backup-dir=${bkupDir} --delete --suffix=${backupSuffix} "
+bkSubDir=${bkupDir}/`date "+%Y%m%d%H%M%S"`
+echo "Log : Backup Sub Dir is ${bkSubDir}"
 
-echo "Log : Deleted or changed file will be moved to ${bkupDir} with the extension ${backupSuffix}"
+syncCmd="rsync -avv --log-file=${logFile} --backup --backup-dir=${bkSubDir} --delete "
+
+echo "Log : Deleted or changed file will be moved to ${bkSubDir}"
 echo "Log : rsync log messages will be logged to ${logFile}"
 
 oldIFS=$IFS
 IFS='
 '
-
+startTime=`date`
 for i in `cat ${profileFile} | grep -v "^#" | grep -v "^CTRL|"`
 do
 	IFS=$oldIFS
 	src=`echo "$i" | awk -F"|" '{print $1}'`
 	dest=`echo "$i" | awk -F"|" '{print $2}'`
+	echo "Log : Source : ${src}, Destination : ${dest}"
+	sleep 1
 
 	${syncCmd} "${src}" "${dest}"
 done
+
+# Repeating few info, but will be handy when using tail to see the log file.
+echo "Log : Profile file is ${profileFile}"
+echo "Log : Backup Sub Dir is ${bkSubDir}"
+echo "Log : Log file is ${logFile}"
+echo "Log : started  at $startTime"
+echo "Log : Finished at `date`"
+echo "Log : Failures ================================="
+grep -i -e fail ${logFile}
 exit
